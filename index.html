@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="img/png" href="https://seeklogo.com/images/R/Rebel_Alliance-logo-0E7561F6E4-seeklogo.com.png">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAPI API</title>
+<style>
+body{
+   background-color: black;
+}
+
+.container{
+	border: 1px black;
+}
+
+.box{
+    text-align: center;
+    color: white;
+	background-color: black;
+	margin: 10px;
+	
+    border-radius: 30px;
+	width: 250px;
+	height: 150px;
+	transition: .5s;
+	cursor: pointer;
+	padding: 15px;
+	display: inline-block;
+}
+
+.box:hover{
+	border-radius: 30px;
+	transform: translateY(-5px);
+	box-shadow: 0 3px 10px white; 
+}
+
+.box h1{
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
+.hide{
+    color: black;
+}
+
+.hide:hover{
+    transition: 0.5s;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <div class="container">
+
+    </div>
+
+<script>
+const container = document.querySelector(".container");
+
+function Main(){
+	fetch('https://swapi.dev/api/people/')
+	.then(res => res.json())
+	.then(data => {
+
+		const objek = data.results;
+		objek.forEach(obj => {
+			container.innerHTML += `
+			<div class="${obj.name} box">
+	            <h1 class="name">${obj.name}</h1>
+	            <div class="hide">
+	                Birth Year: ${obj.birth_year}
+	                <br>
+	                Height: ${obj.height} <br><br>
+	            </div>
+        	</div>
+			`;
+
+		})	
+	})
+
+}
+
+Main();
+    </script>
+</body>
+</html>
