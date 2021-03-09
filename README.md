@@ -1,2 +1,2 @@
-# swapi_api_test
-another swapi api project
+# SWAPI API ALL DATA READ
+this is my same project, but only read all the data, not randomized
